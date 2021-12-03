@@ -1,13 +1,13 @@
-//============================================================================
+Ôªø//============================================================================
 // Name        : PokemonMasterQuest.cpp
 // Author      : Carlos Piccolini
 // Version     : 0.1
 // Copyright   : Your copyright notice
 // Description : Pokemon Master Quest juego de mesa.
 /*
- * El objetivo de esta versiÛn es el de funcionar como un hibrido entre el
+ * El objetivo de esta versiÓâ¢ es el de funcionar como un hibrido entre el
  * juego de mesa para realizar las cuentas. No se busca que guie a los
- * jugadores totalmente en su viaje, sino acompaÒarlos en todos los calculos
+ * jugadores totalmente en su viaje, sino acompaÓÉùrlos en todos los calculos
  * realizados durante cada batalla pokemon.
  */
 //============================================================================
@@ -15,6 +15,8 @@
 /****************** INCLUDES ******************/
 #include <iostream>
 #include <iomanip>
+#include <wchar.h>
+#include <locale.h>
 #include "Player.h"		// Incluye las clases para instanciar Jugadores
 
 /****************** VARIABLES ******************/
@@ -33,6 +35,8 @@ void newEvent();
 
 /****************** MAIN ******************/
 int main() {
+	// Establecer el idioma a espa√±ol
+	setlocale(LC_ALL, "spanish");
 	/****************** CARGAR PARTIDA ******************/
 	/****************** JUEGO NUEVO ******************/
 	newGame();
@@ -42,7 +46,8 @@ int main() {
 				  << std::endl
 				  << std::setw(10) << std::left << "1 Ruta"
 				  << std::setw(20) << std::left << "2 Centro Pokemon"
-				  << std::setw(10) << std::left << "3 Gimnasio"
+				  << std::setw(20) << std::left << "3 Cambio Equipo"
+				  << std::setw(10) << std::left << "4 Gimnasio"
 				  << std::endl;
 		std::cin >> eventChoice;	// Se elije un evento
 		std::cout << std::endl;
@@ -53,7 +58,10 @@ int main() {
 			case 2:	// CP
 				pokemonCenter(players);
 				break;
-		}
+			case 3:	// Modificar team y usar objetos
+				administrateTeam(players);
+				break;
+		}	
 	}
 
 	/*
@@ -77,7 +85,7 @@ void newGame() {
 		std::cin >> players_quantity;
 		std::cout << std::endl;
 		if(players_quantity < 1 or players_quantity > 5)
-			std::cout << "La cantidad de jugadores indicada no es v·lida" << std::endl << std::endl;
+			std::cout << "La cantidad de jugadores indicada no es v√°lida" << std::endl << std::endl;
 	}
 
 	for(int i = 0; i < players_quantity; i++) {				// Se crean los jugadores
@@ -92,7 +100,7 @@ void newGame() {
 		std::cin >> name_temp;
 		std::cout << std::endl;
 		players.at(i).addPokemon(Pokemon (findPokemon(name_temp), 1));
-		// Esto solo estÅEpara el debuggeo
+		// Esto solo est√° para el debuggeo
 		players.at(i).displayPokemons();
 		players.at(i).displayTeam();
 		std::cout << std::endl;
@@ -105,15 +113,15 @@ void newGame() {
 /*
 void newZone() {
 	int event {0};				// Para elegir el evento
-	bool event_valid {false};	// Para verificar que se eligiÅEun evento v·lido
+	bool event_valid {false};	// Para verificar que se eligi„Éªun evento vÁñùido
 	std::cout << std::left << "Comienza nueva zona" << std::endl;
 	while(!event_valid) {		// Selecciono un tipo de zona
 		std::cout << "La siguiente zona es una Ruta (1) o un Pueblo (2): ";
 		std::cin >> event;
 		if(event == 1 || event == 2) {
 			event_valid = true;
-			std::cout << "Evento v·lido" << std::endl;
-		} else std::cout << "Evento no v·lido" << std::endl;
+			std::cout << "Evento vÁñùido" << std::endl;
+		} else std::cout << "Evento no vÁñùido" << std::endl;
 	}
 	switch(event) {				// Dependiendo la zona procedo con el evento
 		case 1:		// Ruta
@@ -132,17 +140,17 @@ void newZone() {
 
 void newEvent() {
 	int event {0};				// Para elegir el evento
-	bool event_valid {false};	// Para verificar que se eligiÅEun evento v·lido
+	bool event_valid {false};	// Para verificar que se eligi„Éªun evento vÁñùido
 	while(!event_valid) {		// Selecciono un tipo de evento
-		std::cout << "Indique el n˙mero de evento: " << std::endl
+		std::cout << "Indique el n‰ºπero de evento: " << std::endl
 				  << std::setw(5) << ' ' << "1. Batalla Individual" << std::endl
 				  << std::setw(5) << ' ' << "2. Centro Pokemon" << std::endl
 				  << std::setw(5) << ' ' << "3. Gimnasio" << std::endl;
 		std::cin >> event;
 		if(event == 1 || event == 2 || event == 3) {
 			event_valid = true;
-			std::cout << "Evento v·lido" << std::endl;
-		} else std::cout << "Evento no v·lido" << std::endl;
+			std::cout << "Evento vÁñùido" << std::endl;
+		} else std::cout << "Evento no vÁñùido" << std::endl;
 	}
 }
 */

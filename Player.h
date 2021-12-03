@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  * Player.h
  *
  *  Clase para instanciar cada nuevo jugador
@@ -14,13 +14,14 @@
 
 /****************** CLASS ******************/
 class Player {
-	friend void battle(std::vector<Player> &players);		// Función para manjear las peleas contra salvajes y entrenadores
-	friend void pokemonCenter(std::vector<Player> &players);// Función para curar Pokemon y modificar team
+	friend void battle(std::vector<Player> &players);		// FunciÃ³n para manjear las peleas contra salvajes y entrenadores
+	friend void pokemonCenter(std::vector<Player> &players);// FunciÃ³n para curar Pokemon y modificar team
+	friend void administrateTeam(std::vector<Player>& players);	// FunciÃ³n para modificar team
 private:
 	std::string name;
 	std::vector<Pokemon> pokemons;		// Lista con todos los Pokemon del Jugador
-	std::vector<int> team;				// Integer que indica ubicación en vector pokemons los Pokemons en el team
-	int active_pokemon;					// Integer que indica ubicación en vector pokemons al Pokemon activo
+	std::vector<int> team;				// Integer que indica ubicaciî‰¢ en vector pokemons los Pokemons en el team
+	int active_pokemon;					// Integer que indica ubicaciî‰¢ en vector pokemons al Pokemon activo
 	bool defeated;						// Es verdadero cuando el jugador tiene su team completo debilitado
 public:
 	Player(std::string name);
@@ -28,8 +29,8 @@ public:
 	void addPokemon(Pokemon pokemon);					// Agregar nuevo Pokemon a lista de Pokemons
 	bool capturePokemon(Pokemon &captured_pokemon);		// Intenta capturar un Pokemon salvaje
 	void changeTeam();									// Intercambia Pokemons del team por de la PC
-	void giveObject();									// Se le da un objeto a algún Pokemon del team
-	void gainExp(float exp);							// Al ganar experiencia la distribuye acorde a la participación
+	void giveObject();									// Se le da un objeto a algä½– Pokemon del team
+	void gainExp(float exp);							// Al ganar experiencia la distribuye acorde a la participaciî‰¢
 	void selectActive();								// Elegir el Pokemon activo del team
 	bool isTeamDefeated();								// Verifica si todos los Pokemon del team se encuentran debilitados, y de estarlos, debilita al jugador
 	Pokemon getTeamPokemon(int i);						// Me devuelve un Pokemon del team

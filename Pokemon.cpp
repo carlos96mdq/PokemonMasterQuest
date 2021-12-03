@@ -1,4 +1,4 @@
-/*
+Ôªø/*
  * Pokemon.cpp
  */
 
@@ -9,8 +9,8 @@
 Pokemon::Pokemon() {
 }
 
-Pokemon::Pokemon(PokemonData poke, int level, float exp)
-	:info(poke), damage(0.0), level(level), exp(exp), defeated(false), state("None"), sleep_counter(0), flinched(false), moves() {
+Pokemon::Pokemon(PokemonData poke, int level, bool savage)
+	:info(poke), damage(0.0), level(level), savage(savage), exp(growth.at(info.growth_curve).at(level - 1)), defeated(false), state("None"), sleep_counter(0), flinched(false), moves() {
 	statsRefresh();
 	modifierRefresh();
 	temporalStatusRefresh();
@@ -23,7 +23,7 @@ Pokemon::~Pokemon() {
 }
 
 float Pokemon::statRefresh(float stat) {
-	return (2 * stat * level * 4 / 100) + 5;	// Ese x4 aparece para compensar el crecimiento r·pido de los Pokemon
+	return (2 * stat * level * 4 / 100) + 5;	// Ese x4 aparece para compensar el crecimiento rÁñ≥ido de los Pokemon
 }
 
 void Pokemon::statsRefresh() {
@@ -77,7 +77,7 @@ void Pokemon::passCampusStatus(Pokemon &last_pokemon) {
 	toxic_spikes = last_pokemon.toxic_spikes;
 	toxic_spikes_plus = last_pokemon.toxic_spikes_plus;
 
-	if(toxic_spikes || toxic_spikes_plus) {	// Se activa el efecto de P˙as TÛxicas
+	if(toxic_spikes || toxic_spikes_plus) {	// Se activa el efecto de P√∫as T√≥xicas
 		bool immune {false};
 		bool poison {false};
 		bool flying {false};
@@ -97,7 +97,7 @@ void Pokemon::passCampusStatus(Pokemon &last_pokemon) {
 		}
 		if(info.hability == 17)		// Inmunidad por habilidad Inmunidad
 			immune = true;
-		if(info.hability == 26) {	// Inmunidad por habilidad LevitaciÛn
+		if(info.hability == 26) {	// Inmunidad por habilidad Levitaci√≥n
 			immune = true;
 			levitation = false;
 		}
@@ -105,19 +105,23 @@ void Pokemon::passCampusStatus(Pokemon &last_pokemon) {
 			immune = true;
 		if(!immune || !toxic_spikes_plus) {
 			state == "Envenenado";
-			std::cout << info.name << " se encuentra ahora Envenenado por el efecto de P˙as TÛxicas" << std::endl;
+			std::cout << info.name << " se encuentra ahora Envenenado por el efecto de P‰øâs TÓâ¨icas" << std::endl;
 		} else if(!immune || toxic_spikes_plus) {
 			state == "Envenenado+";
 			poisoned_counter = 1;
-			std::cout << info.name << " se encuentra ahora Gravemente Envenenado por el efecto de P˙as TÛxicas" << std::endl;
+			std::cout << info.name << " se encuentra ahora Gravemente Envenenado por el efecto de P‰øâs TÓâ¨icas" << std::endl;
 		} else
-			std::cout << info.name << " es inmune al efecto de P˙as TÛxicas" << std::endl;
+			std::cout << info.name << " es inmune al efecto de P‰øâs TÓâ¨icas" << std::endl;
 
-		if(poison && !flying && !levitation) {	// Despeja las P˙as TÛxicas
+		if(poison && !flying && !levitation) {	// Despeja las P√∫as T√≥xicas
 			toxic_spikes = false;
-			std::cout << info.name << " ha esparcido las P˙as TÛxicas" << std::endl;
+			std::cout << info.name << " ha esparcido las P‰øâs TÓâ¨icas" << std::endl;
 		}
 	}
+}
+
+void Pokemon::domated() {
+	savage = false;
 }
 
 void Pokemon::newMove(bool newPokemon, bool evolutionMove) {
@@ -132,10 +136,10 @@ void Pokemon::newMove(bool newPokemon, bool evolutionMove) {
 	} else
 		temp_level = level;
 	std::vector<MoveLevel>::iterator it = std::find_if(info.moves.begin(), info.moves.end(), [&](MoveLevel move) {return temp_level == move.level;});
-	for(auto j = temp_level; j < end_level + 1; j++) {	// Este for es para contemplar la creaciÛn de un nuevo Pokemon
+	for(auto j = temp_level; j < end_level + 1; j++) {	// Este for es para contemplar la creaci√≥n de un nuevo Pokemon
 		for(auto i = 0; i < 3; i++ ) {		// Contempla hasta 3 movimientos nuevos por nivel
-			if(it != info.moves.end()) {		// Verifico que sÅEhaya alg˙n movimiento que se gana en ese nivel
-				if(it->level == j) {	// Verifico si se aprende en este nivel (esta comprobaciÛn estÅEm·s que nada por el 2do movimiento
+			if(it != info.moves.end()) {		// Verifico que si haya alg√∫n movimiento que se gana en ese nivel
+				if(it->level == j) {	// Verifico si se aprende en este nivel (esta comprobaci√≥n est√° m√°s que nada por el 2do movimiento
 					std::cout << info.name << " puede aprender el movimiento " << it->name << std::endl;
 					if(moves.size() <= 4) {		// Tengo lugar para aprender movimientos
 						moves.push_back(it->name);	// Agrego el movimiento a la lista
@@ -183,7 +187,7 @@ void Pokemon::evolve() {
 	std::cout << "Parece que " << info.name << " esta evolucionando" << std::endl;
 	std::cout << info.name << " ha evolucionado en " << info.evolution.name << std::endl;
 	info = findPokemon(info.evolution.name);
-	newMove(false, true);	// Para aprender movimientos de EvoluciÛn
+	newMove(false, true);	// Para aprender movimientos de Evoluci√≥n
 }
 
 void Pokemon::levelUp() {
@@ -200,43 +204,46 @@ void Pokemon::gainExp(float gained_exp) {
 			  << gained_exp << " puntos de experiencia"
 			  << std::endl;
 	if(level < 15)
-		if(exp >= growth.at(info.growth_curve).at(level - 1))
+		if(exp >= growth.at(info.growth_curve).at(level))	// Vector de valores constantes
 			levelUp();
 }
 
 float Pokemon::giveExp() {
-	return info.stats.base_exp * level * 4;	// El 4 se agrega para compensar
+	if (savage) 
+		return info.stats.base_exp * level * 4;	// El 4 se agrega para compensar 
+	else
+		return info.stats.base_exp * level * 4 * 1.5;	// El 4 se agrega para compensarv y el 2 por el bonus de tener entrenador
 }
 
 void Pokemon::counterUp() {
 	if(light_screen)			// Aumento contador de Pantalla de Luz
 		light_screen_counter += 1;
 
-	if(light_screen_counter == 5) {// Se acabÅEel efecto de Pantalla de Luz
+	if(light_screen_counter == 5) {// Se acab√≥ el efecto de Pantalla de Luz
 		light_screen = false;
 		light_screen_counter = 0;
 	}
 
-	if(safeguard)				// Aumento contador de Velo Sagrado
+	if(safeguard)				// Aument√≥ contador de Velo Sagrado
 		safeguard_counter += 1;
 
-	if(safeguard_counter == 5) {// Se acabÅEel efecto de Velo Sagrado
+	if(safeguard_counter == 5) {// Se acab√≥ el efecto de Velo Sagrado
 		safeguard = false;
 		safeguard_counter = 0;
 	}
 
-	if(tailwind)				// Aumento contador de Viento Af˙ã
+	if(tailwind)				// Aument√≥ contador de Viento Af√≠n
 		tailwind_counter += 1;
 
-	if(tailwind_counter == 4) {	// Se acabÅEel efecto de Viento Af˙ã
+	if(tailwind_counter == 4) {	// Se acab√≥ el efecto de Viento Af√≠n
 		tailwind = false;
 		tailwind_counter = 0;
 	}
 }
 
 void Pokemon::useMove(Pokemon &objetive, std::string move) {
-	float accuracy_dice {};				// Valor del dado de 1-20, siendo 1 cr˙ëico
-	bool failed {false};				// Indica true si en este turno el pokemon no puede moverse por la Paralisis o la ConfusiÛn
+	float accuracy_dice {};				// Valor del dado de 1-20, siendo 1 cr√≠ico
+	bool failed {false};				// Indica true si en este turno el pokemon no puede moverse por la Paralisis o la ConfusiÓâ¢
 	Move move_info (findMove(move));	// Creo referencia a la base de datos de movimientos
 
 	if(state == "Dormido") {			// Verifico si estoy dormido
@@ -261,12 +268,12 @@ void Pokemon::useMove(Pokemon &objetive, std::string move) {
 		}
 	}
 
-	if(confused && !failed && !(state == "Dormido")) {	// Verifico si se autogolpea por la ConfusiÛn y si se libera de la ConfusiÛn
+	if(confused && !failed && !(state == "Dormido")) {	// Verifico si se autogolpea por la Confusi√≥n y si se libera de la ConfusiÓâ¢
 		std::cout << info.name << " se encuentra confundido" << std::endl;
 		std::cout << "Lanza el dado para intentar moverse: ";
 		std::cin >> accuracy_dice;
 		if(accuracy_dice < 4 + confused_counter * 2) {
-			std::cout << info.name << " ya no estÅEconfundido" << std::endl;
+			std::cout << info.name << " ya no est„Éªconfundido" << std::endl;
 			confused = "false";
 			confused_counter = 0;
 		} else {
@@ -278,7 +285,7 @@ void Pokemon::useMove(Pokemon &objetive, std::string move) {
 		}
 	}
 
-	if(!(state == "Dormido") && !failed) {			// Solo se realizarÅEel movimiento si el Pokemon estÅEdespierto
+	if(!(state == "Dormido") && !failed) {			// Solo se realizar„Éªel movimiento si el Pokemon est√° despierto
 		std::cout << info.name << " ha utilizado el movimiento " << move_info.name << std::endl;
 
 		if(move_info.effect_1 == "Cadena")	// Si es un movimiento cadena los ejecuto, al estilo Ataque Furia
@@ -296,15 +303,15 @@ void Pokemon::useMove(Pokemon &objetive, std::string move) {
 }
 
 void Pokemon::ejecuteMove(Pokemon &objetive, Move &move_info) {
-	float accuracy_dice {10};			// Valor del dado de 1-20, siendo 1 cr˙ëico; se pone en 10 por movimientos de daÒo como Golpe AÈreo que nunca fallan
-	float accuracy_hability_mod {1.0};	// Modificador de la PrecisiÛn porducto de una habilidad
+	float accuracy_dice {10};			// Valor del dado de 1-20, siendo 1 cr√≠tico; se pone en 10 por movimientos de da√±o como Golpe AÈßªeo que nunca fallan
+	float accuracy_hability_mod {1.0};	// Modificador de la Precisi√≥n porducto de una habilidad
 	bool missed {false};				// Indica true si el movimiento falla
-	float stab {1.0};					// BonificaciÛn por movimiento del mismo tipo que el pokemon
-	float hability_bonus {1.0};			// BonificaciÛn por ciertas habilidades
-	float damage_done {0};				// DaÒo realizado cn el movimiento
+	float stab {1.0};					// BonificaciÓâ¢ por movimiento del mismo tipo que el pokemon
+	float hability_bonus {1.0};			// BonificaciÓâ¢ por ciertas habilidades
+	float damage_done {0};				// DaÓÉ´ realizado cn el movimiento
 
-	if(move_info.accuracy > 0) {		// Si el movimiento tiene precisiÛn ya se lanza el dado y se determina si el movimiento acierta
-		std::cout << "Lanza el dado de precisiÛn e indique el valor: ";
+	if(move_info.accuracy > 0) {		// Si el movimiento tiene precisiÓâ¢ ya se lanza el dado y se determina si el movimiento acierta
+		std::cout << "Lanza el dado de precisiÓâ¢ e indique el valor: ";
 		std::cin >> accuracy_dice;
 		if(info.hability == 14)	// Habilidad Ojo Compuesto
 			accuracy_hability_mod = 1.3;
@@ -321,53 +328,53 @@ void Pokemon::ejecuteMove(Pokemon &objetive, Move &move_info) {
 			receiveMove(move_info, 15, level, attack, attack_mod);
 		else
 			receiveMove(move_info);
-	} else if(missed == false)  {							// En caso que el movimiento sea para un ˙nico objetivo, todos los oponentes, o todos y no haya fallado
-		for(auto type: info.types) {						// Verifico si tengo bonificaciÛn stab
+	} else if(missed == false)  {							// En caso que el movimiento sea para un ‰Ωñico objetivo, todos los oponentes, o todos y no haya fallado
+		for(auto type: info.types) {						// Verifico si tengo bonificaciÓâ¢ stab
 			if(type == move_info.type)
 				stab = 1.5;
 		}
 
-		if(info.hability == 65 || info.hability == 66 || info.hability == 67 || info.hability == 68) {	// Verifico si tengo un aumento de daÒo por habilidad
+		if(info.hability == 65 || info.hability == 66 || info.hability == 67 || info.hability == 68) {	// Verifico si tengo un aumento de daÓÉ´ por habilidad
 			switch(info.hability) {
 				case 65:	// Espesura
 					if(move_info.type == "Planta" && (getActualHealth() / getMaxHealth()) <= 0.34 ) {
 						displayName();
-						std::cout << " utiliza la habilidad Espesura para aumentar el daÒo hecho" << std::endl;
+						std::cout << " utiliza la habilidad Espesura para aumentar el daÓÉ´ hecho" << std::endl;
 						hability_bonus = 1.5;
 					}
 				break;
 				case 66:	// Mar Llamas
 					if(move_info.type == "Fuego" && (getActualHealth() / getMaxHealth()) <= 0.34 ) {
 						displayName();
-						std::cout << " utiliza la habilidad Mar Llamas para aumentar el daÒo hecho" << std::endl;
+						std::cout << " utiliza la habilidad Mar Llamas para aumentar el daÓÉ´ hecho" << std::endl;
 						hability_bonus = 1.5;
 					}
 				break;
 				case 67:	// Torrente
 					if(move_info.type == "Agua" && (getActualHealth() / getMaxHealth()) <= 0.34 ) {
 						displayName();
-						std::cout << " utiliza la habilidad Torrente para aumentar el daÒo hecho" << std::endl;
+						std::cout << " utiliza la habilidad Torrente para aumentar el daÓÉ´ hecho" << std::endl;
 						hability_bonus = 1.5;
 					}
 				break;
 				case 68:	// Enjambre
 					if(move_info.type == "Bicho" && (getActualHealth() / getMaxHealth()) <= 0.34 ) {
 						displayName();
-						std::cout << " utiliza la habilidad Enjambre para aumentar el daÒo hecho" << std::endl;
+						std::cout << " utiliza la habilidad Enjambre para aumentar el daÓÉ´ hecho" << std::endl;
 						hability_bonus = 1.5;
 					}
 				break;
 			}
 		}
 
-		if(move_info.clas == "Fisico") {					// Si el movimiento es f˙êisco
+		if(move_info.clas == "Fisico") {					// Si el movimiento es fÔ®éisco
 			if(move_info.name == "Esfuerzo")
 				objetive.receiveMove(move_info, accuracy_dice, level, getActualHealth());
 			else if(info.hability == 62 && (state == "Quemado" || state == "Dormido" || state == "Envenenado" || state == "Paralizado")) {// Habilidad Agallas
 				displayName();
-				std::cout << " utiliza la habilidad Agallas para aumentar el daÒo hecho" << std::endl;
+				std::cout << " utiliza la habilidad Agallas para aumentar el daÓÉ´ hecho" << std::endl;
 				damage_done = objetive.receiveMove(move_info, accuracy_dice, level, attack*1.5, attack_mod, getVelocity(), stab, hability_bonus);
-			} else if(state == "Quemado")							// Si estÅEQuemado se reduce el Ataque
+			} else if(state == "Quemado")							// Si est„ÉªQuemado se reduce el Ataque
 				damage_done = objetive.receiveMove(move_info, accuracy_dice, level, attack/2.0, attack_mod, getVelocity(), stab, hability_bonus);
 			else
 				damage_done = objetive.receiveMove(move_info, accuracy_dice, level, attack, attack_mod, getVelocity(), stab, hability_bonus);
@@ -376,26 +383,26 @@ void Pokemon::ejecuteMove(Pokemon &objetive, Move &move_info) {
 		} else objetive.receiveMove(move_info);				// Si el movimiento es de estado
 
 		if(move_info.effect_1 == "Retroceso") {
-			std::cout << info.name << " ha sufrido daÒo de retroceso" << std::endl;
-			if(receiveDamage(damage_done * move_info.effect_3).defeated)	// Si el Pokemon se debilita con el daÒo se acaba la ejecuciÛn del movimiento
+			std::cout << info.name << " ha sufrido da√±o de retroceso" << std::endl;
+			if(receiveDamage(damage_done * move_info.effect_3).defeated)	// Si el Pokemon se debilita con el daÓÉ´ se acaba la ejecuciÓâ¢ del movimiento
 				return;
 		}
 
-		if(move_info.contact && objetive.info.hability == 9 && state == "None") {	// Habilidad Electricidad Est·tica
-			std::cout << info.name << " lanza el dado para verificar si es afectado por la habilidad Electricidad Est·tica";
+		if(move_info.contact && objetive.info.hability == 9 && state == "None") {	// Habilidad Electricidad Est√°tica
+			std::cout << info.name << " lanza el dado para verificar si es afectado por la habilidad Electricidad Est√°tica: ";
 			std::cin >> accuracy_dice;
 			if(accuracy_dice > 14) {
 				state = "Paralizado";
-				std::cout << info.name << " ahora estÅEParalizado" << std::endl;
+				std::cout << info.name << " ahora est√° Paralizado" << std::endl;
 			}
 		}
 
-		if(move_info.contact && objetive.info.hability == 38 && state == "None") {	// Habilidad Punto TÛxico
-			std::cout << info.name << " lanza el dado para verificar si es afectado por la habilidad Punto Toxico";
+		if(move_info.contact && objetive.info.hability == 38 && state == "None") {	// Habilidad Punto T√≥xico
+			std::cout << info.name << " lanza el dado para verificar si es afectado por la habilidad Punto T√≥xico: ";
 			std::cin >> accuracy_dice;
 			if(accuracy_dice > 14) {
 				state = "Envenenado";
-				std::cout << info.name << " ahora estÅEEnvenenado" << std::endl;
+				std::cout << info.name << " ahora est√° Envenenado" << std::endl;
 			}
 		}
 
@@ -410,12 +417,12 @@ float Pokemon::receiveMove(Move &move_info, int accuracy_dice, int user_level, f
 	float objetive_defense {0};	// La defensa del Pokemon objetivo, la cual dependera del tipo de move si se utiliza defensa o defensa expecial
 	float objetive_defense_mod {1};
 	int critic {1};
-	float received_damage {0};	// DaÒo recibido por este movimiento
+	float received_damage {0};	// DaÓÉ´ recibido por este movimiento
 	int power {move_info.power};
 	float light_screen_mod {1};
 
-	if(move_info.power > 0) {	// Si es un movimiento que hace daÒo se calcula, sino se saltea este paso
-		if(move_info.clas == "Fisico") {		// Si el movimiento es f˙êisco
+	if(move_info.power > 0) {	// Si es un movimiento que hace daÓÉ´ se calcula, sino se saltea este paso
+		if(move_info.clas == "Fisico") {		// Si el movimiento es fÔ®éisco
 			objetive_defense = defense;
 			objetive_defense_mod = defense_mod;
 		}
@@ -429,7 +436,7 @@ float Pokemon::receiveMove(Move &move_info, int accuracy_dice, int user_level, f
 
 		effectiveness = getEffectiveness(move_info.type, info.types);	// Verifica efectividad
 
-		if(accuracy_dice <= (critic_mod + move_info.critic)) {			// Verifica si hay o no golpe cr˙ëico
+		if(accuracy_dice <= (critic_mod + move_info.critic)) {			// Verifica si hay o no golpe crÂíúico
 			critic = 2;
 			std::cout << "Ha sido un golpe critico" << std::endl;
 			if(light_screen_mod == 0.5) {
@@ -437,10 +444,10 @@ float Pokemon::receiveMove(Move &move_info, int accuracy_dice, int user_level, f
 				light_screen = false;
 				std::cout << "La Pantalla de Luz ha sido eliminada" << std::endl;
 			}
-			// Deberia de ver si tener en cuenta la anulaciÛn de modificadores
+			// Deberia de ver si tener en cuenta la anulaciÓâ¢ de modificadores
 		}
 
-		if(move_info.name == "Carga Toxica" && (state == "Envenenado" || state == "Envenenado+")) {	// Verifica si se activa Carga TÛxica
+		if(move_info.name == "Carga Toxica" && (state == "Envenenado" || state == "Envenenado+")) {	// Verifica si se activa Carga TÓâ¨ica
 			std::cout << "Carga Toxica duplica su fuerza" << std::endl;
 			move_info = (findMove("Carga Toxica+"));
 		}
@@ -479,9 +486,9 @@ float Pokemon::receiveMove(Move &move_info, int accuracy_dice, int user_level, f
 			else
 				std::cout << info.name << " no se ve afectado por Esfuerzo" << std::endl;
 		} else
-			received_damage = 0.01 * critic * light_screen_mod * stab * hability_bonus * effectiveness * (82 + 20 / accuracy_dice) * ((((0.2 * user_level * 4 + 1) * power * user_attack * user_attack_mod) / (25 * objetive_defense * objetive_defense_mod)) + 2);	// El 4 se agregÅEpor la rapidez para subir de nivel
+			received_damage = 0.01 * critic * light_screen_mod * stab * hability_bonus * effectiveness * (82 + 20 / accuracy_dice) * ((((0.2 * user_level * 4 + 1) * power * user_attack * user_attack_mod) / (25 * objetive_defense * objetive_defense_mod)) + 2);	// El 4 se agreg„Éªpor la rapidez para subir de nivel
 
-		if(receiveDamage(received_damage).defeated)	// Si el Pokemon se debilita con el daÒo se acaba la ejecuciÛn del movimiento
+		if(receiveDamage(received_damage).defeated)	// Si el Pokemon se debilita con el daÓÉ´ se acaba la ejecuciÓâ¢ del movimiento
 			return received_damage;
 	}
 
@@ -499,33 +506,33 @@ float Pokemon::receiveMove(Move &move_info, int accuracy_dice, int user_level, f
 
 boolFloat Pokemon::receiveDamage(float received_damage) {
 	displayName();
-	if(received_damage > 0) {	// DaÒo por movimiento
-		std::cout << " ha sufrido " << received_damage << " puntos de daÒo" << std::endl;
+	if(received_damage > 0) {	// DaÓÉ´ por movimiento
+		std::cout << " ha sufrido " << received_damage << " puntos de daÓÉ´" << std::endl;
 		damage += received_damage;
-	} else {					// DaÒo por estado
-		if(state == "Envenenado") {			// DaÒo de Envenenamiento
+	} else {					// DaÓÉ´ por estado
+		if(state == "Envenenado") {			// DaÓÉ´ de Envenenamiento
 			received_damage = health / 8;
-			std::cout << " ha sufrido " << received_damage << " puntos de daÒo por Envenenamiento" << std::endl;
+			std::cout << " ha sufrido " << received_damage << " puntos de daÓÉ´ por Envenenamiento" << std::endl;
 			damage += received_damage;
-		} else if(state == "Envenenado+") {	// DaÒo de Envenenamiento Grave
+		} else if(state == "Envenenado+") {	// DaÓÉ´ de Envenenamiento Grave
 			received_damage = poisoned_counter * health / 16;
-			std::cout << " ha sufrido " << received_damage << " puntos de daÒo por Envenenamiento Grave" << std::endl;
+			std::cout << " ha sufrido " << received_damage << " puntos de daÓÉ´ por Envenenamiento Grave" << std::endl;
 			damage += received_damage;
 			poisoned_counter++;
-		} else if(state == "Quemado") {		// DaÒo de Quemadura
+		} else if(state == "Quemado") {		// DaÓÉ´ de Quemadura
 			received_damage = health / 8;
-			std::cout << " ha sufrido " << received_damage << " puntos de daÒo por Quemadura" << std::endl;
+			std::cout << " ha sufrido " << received_damage << " puntos de daÓÉ´ por Quemadura" << std::endl;
 			damage += received_damage;
 		}
-		if(seeded) {						// DaÒo de Drenado
-			received_damage = health / 8;	// Lo dejo al final asÅEdevuelve el daÒo de drenado
-			std::cout << " ha sufrido " << received_damage << " puntos de daÒo por Drenado" << std::endl;
+		if(seeded) {						// DaÓÉ´ de Drenado
+			received_damage = health / 8;	// Lo dejo al final as„Éªdevuelve el daÓÉ´ de drenado
+			std::cout << " ha sufrido " << received_damage << " puntos de daÓÉ´ por Drenado" << std::endl;
 			damage += received_damage;
 		}
 	}
-	std::cout << "El daÒo acumulado es de " << damage << " puntos" << std::endl;
+	std::cout << "El daÓÉ´ acumulado es de " << damage << " puntos" << std::endl;
 
-	if(damage >= health) {	// Si el daÒo excede a los PS, el Pokemon se debilita
+	if(damage >= health) {	// Si el daÓÉ´ excede a los PS, el Pokemon se debilita
 		std::cout << info.name << " se ha debilitado" << std::endl;
 		defeated = true;
 		return {true, received_damage};
@@ -539,7 +546,7 @@ void Pokemon::receiveEffect(Move &move_info) {
 	if(move_info.effect_probability < 1.0) {										// Verifico si tiene probabildiad de fallar
 		std::cout << "Lanza el dado para el efecto: ";
 		std::cin >> effect_dice;
-		if(effect_dice > 20 - 20 * move_info.effect_probability) {			// El efecto no se activa y se acaba el recivimiento de daÒo
+		if(effect_dice > 20 - 20 * move_info.effect_probability) {			// El efecto no se activa y se acaba el recivimiento de daÓÉ´
 			std::cout << "El efecto no se ha activado" << std::endl;
 			return;
 		}
@@ -548,7 +555,7 @@ void Pokemon::receiveEffect(Move &move_info) {
 	if(move_info.effect_probability > 1.0 && move_info.effect_probability < 2.0) {	// Verifico si tiene probabildiad de fallar
 		std::cout << "Lanza el dado para el efecto: ";
 		std::cin >> effect_dice;
-		if(effect_dice > 20 - 20 * (move_info.effect_probability - 1.0)) {	// El efecto no se activa y se acba el recivimiento de daÒo
+		if(effect_dice > 20 - 20 * (move_info.effect_probability - 1.0)) {	// El efecto no se activa y se acba el recivimiento de daÓÉ´
 			std::cout << "El efecto no se ha activado" << std::endl;
 			return;
 		}
@@ -576,7 +583,7 @@ void Pokemon::receiveEffect(Move &move_info) {
 				velocity_mod *= pow(1.4, move_info.effect_3);
 				displayName();
 				std::cout << move_info.effect_description << std::endl;
-			} else if(effect_2 == "Precision") {		// Modifica la PrecisiÛn
+			} else if(effect_2 == "Precision") {		// Modifica la PrecisiÓâ¢
 				if(!(info.hability == 51)) {	// Habilidad Vista Lince
 					accuracy_mod *= pow(1.3, move_info.effect_3);
 					displayName();
@@ -585,13 +592,13 @@ void Pokemon::receiveEffect(Move &move_info) {
 					displayName();
 					std::cout << " es inmune a bajar su Precision por la habilidad Vista Lince" << std::endl;
 				}
-			} else if(effect_2 == "Critico") {		// Modifica el ˙ãdice de golpe cr˙ëico
+			} else if(effect_2 == "Critico") {		// Modifica el √≠ndice de golpe cr√≠tico
 				critic_mod += move_info.effect_3;
 				displayName();
 				std::cout << move_info.effect_description << std::endl;
 			}
 		}
-	} else if(move_info.effect_1 == "Estado" || move_info.name == "Doble Ataque") {	// Efectos que modifican los estados // Doble ataque es un caso muy espec˙Éico por lo que tiene su propio nombre
+	} else if(move_info.effect_1 == "Estado" || move_info.name == "Doble Ataque") {	// Efectos que modifican los estados // Doble ataque es un caso muy especÂá¨ico por lo que tiene su propio nombre
 		for(auto effect_2: move_info.effect_2) {
 			bool immune {false};
 			if(effect_2 == "Drenado") {				// Estado Drenado
@@ -632,7 +639,7 @@ void Pokemon::receiveEffect(Move &move_info) {
 					std::cout << " es inmune al Congelamiento" << std::endl;
 				}
 			} else if(effect_2 == "Dormido") {		// Estado Dormido
-				if(safeguard || info.hability == 72)	// Velo Sagrado y habilidad Esp˙èitu Vital
+				if(safeguard || info.hability == 72)	// Velo Sagrado y habilidad EspÂèùitu Vital
 					immune = true;
 				if(!immune && state == "None") {
 					state = "Dormido";
@@ -701,7 +708,7 @@ void Pokemon::receiveEffect(Move &move_info) {
 	} else if(move_info.effect_1 == "Campo") {
 		for(auto effect_2: move_info.effect_2) {
 			bool immune {false};
-			if(effect_2 == "Puas Toxicas") {				// Puas TÛxicas
+			if(effect_2 == "Puas Toxicas") {				// Puas TÓâ¨icas
 				if(!immune && !toxic_spikes) {
 					toxic_spikes = true;
 					displayName();
@@ -713,7 +720,7 @@ void Pokemon::receiveEffect(Move &move_info) {
 					std::cout << "En total hay dos capas de Puas Toxicas en el campo" << std::endl;
 				} else {
 					displayName();
-					std::cout << " es inmune a las P˙as TÛxicas" << std::endl;
+					std::cout << " es inmune a las P‰øâs TÓâ¨icas" << std::endl;
 				}
 			} else if(effect_2 == "Pantalla de Luz") {			// Velo Sagrado
 				if(!immune) {
@@ -735,7 +742,7 @@ void Pokemon::receiveEffect(Move &move_info) {
 					displayName();
 					std::cout << " es inmune a los efectos de Velos Sagrado" << std::endl;
 				}
-			} else if(effect_2 == "Viento Afin") {		// Viento Af˙ã
+			} else if(effect_2 == "Viento Afin") {		// Viento AfÂå§
 				if(!immune) {
 					tailwind = true;
 					tailwind_counter = 0;
@@ -754,7 +761,7 @@ void Pokemon::cureDamage(float healed) {
 	if(healed > 0) {
 		damage += -healed;
 		std::cout << info.name << " se ha curado " << healed
-				  << " puntos de daÒo"
+				  << " puntos de daÓÉ´"
 				  << std::endl
 				  << "Su salud actual es de " << getActualHealth()
 				  << " puntos de salud"
@@ -789,7 +796,7 @@ float Pokemon::getVelocity() {
 	if(state == "Paralizado")	// El estado Paralizado reduce la Velocidad
 		bonus *= 0.25;
 	if(tailwind)
-		bonus *= 2;				// Viento Af˙ã duplica la Velocidad
+		bonus *= 2;				// Viento AfÂå§ duplica la Velocidad
 	return velocity * velocity_mod * bonus;
 }
 

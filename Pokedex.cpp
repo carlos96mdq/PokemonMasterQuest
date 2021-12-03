@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  * Pokedex.cpp
  */
 
@@ -14,25 +14,25 @@ PokemonData findPokemon(std::string pokemon_chosed) { // @suppress("No return")
 			valid_pokemon = true;
 			return *it;	// Me devuelve una estructura PokemonData
 		} else {
-			std::cout << "Nombre de Pokemon no válido" << std::endl
+			std::cout << "Nombre de Pokemon no vç–ido" << std::endl
 					  << "Elija otro nombre de Pokemon: ";
 			std::cin >> pokemon_chosed;
 		}
 	}
-	// No deberú} de ser necesaria esta opción, pero me molesta que salte el warning
+	// No deberia de ser necesaria esta opcion, pero me molesta que salte el warning
 	return pokedex.at(0);
 }
 
 /****************** CONST ******************/
 const std::vector<std::vector<float>> growth {	// Curvas de crecimiento
-	{314.4, 973.6, 2535.2, 5460, 10208.8, 17242.4, 27021.6, 40007.2, 56660, 77440.8, 102810.4, 133229.6, 169159.2, 211060},	// Parabolica
+	{96.8, 314.4, 973.6, 2535.2, 5460, 10208.8, 17242.4, 27021.6, 40007.2, 56660, 77440.8, 102810.4, 133229.6, 169159.2, 211060},	// ParabÃ³lica
 	{},	// 1 Lenta
-	{512, 1728, 4096, 8000, 13824, 21952, 32768, 46656, 64000, 85184, 110592, 140608, 175616, 216000},	// 2 Media
-	{}	// 3 Rapida
+	{64, 512, 1728, 4096, 8000, 13824, 21952, 32768, 46656, 64000, 85184, 110592, 140608, 175616, 216000},	// 2 Media
+	{}	// 3 RÃ¡pida
 };
 
 /****************** VARIABLES ******************/
-std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar cada Pokemon
+std::vector<PokemonData> pokedex {		// De esta manera es mucho mÃ¡s fÃ¡cil buscar cada Pokemon
 	PokemonData {
 		"Bulbasaur",	// Nombre
 		"001",			// Numero
@@ -40,7 +40,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 			"Planta",
 			"Veneno"
 		},
-		0,				// Crecimiento parabólico
+		0,				// Crecimiento parabî‰ ico
 		{				// Stats
 			45,	// Putos de Saluda
 			49,	// Ataque
@@ -56,7 +56,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 		65,				// Espesura
 		{				// Movimientos
 			{"Placaje", 1},
-			{"Gruñido", 1},
+			{"Gruîƒ¥do", 1},
 			{"Latigo Cepa", 2},
 			{"Drenadoras", 3},
 			{"Polvo Veneno", 4},
@@ -72,7 +72,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 			"Planta",
 			"Veneno"
 		},
-		0,				// Crecimiento parabólico
+		0,				// Crecimiento parabî‰ ico
 		{				// Stats
 			60,	// Putos de Saluda
 			62,	// Ataque
@@ -102,7 +102,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 			"Planta",
 			"Veneno"
 		},
-		0,				// Crecimiento parabólico
+		0,				// Crecimiento parabî‰ ico
 		{				// Stats
 			80,	// Putos de Saluda
 			82,	// Ataque
@@ -131,7 +131,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 		{				// Tipo
 			"Fuego"
 		},
-		0,				// Crecimiento parabólico
+		0,				// Crecimiento parabî‰ ico
 		{				// Stats
 			39,	// Putos de Saluda
 			52,	// Ataque
@@ -146,8 +146,8 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 		},
 		66,				// Mar Llamas
 		{				// Movimientos
-			{"Arañazo", 1},
-			{"Gruñido", 1},
+			{"Araîƒzo", 1},
+			{"Gruîƒ¥do", 1},
 			{"Ascuas", 2},
 			{"Pantalla de Humo", 3},
 			{"Garra Metal", 4}
@@ -160,7 +160,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 		{				// Tipo
 			"Fuego"
 		},
-		0,				// Crecimiento parabólico
+		0,				// Crecimiento parabî‰ ico
 		{				// Stats
 			58,	// Putos de Saluda
 			64,	// Ataque
@@ -191,7 +191,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 			"Fuego",
 			"Volador"
 		},
-		0,				// Crecimiento parabólico
+		0,				// Crecimiento parabî‰ ico
 		{				// Stats
 			78,	// Putos de Saluda
 			84,	// Ataque
@@ -222,7 +222,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 		{				// Tipo
 			"Agua"
 		},
-		0,				// Crecimiento parabólico
+		0,				// Crecimiento parabî‰ ico
 		{				// Stats
 			44,	// Putos de Saluda
 			48,	// Ataque
@@ -251,7 +251,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 		{				// Tipo
 			"Agua"
 		},
-		0,				// Crecimiento parabólico
+		0,				// Crecimiento parabî‰ ico
 		{				// Stats
 			59,	// Putos de Saluda
 			63,	// Ataque
@@ -281,7 +281,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 		{				// Tipo
 			"Agua"
 		},
-		0,				// Crecimiento parabólico
+		0,				// Crecimiento parabî‰ ico
 		{				// Stats
 			79,	// Putos de Saluda
 			83,	// Ataque
@@ -491,7 +491,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 			"Normal",
 			"Volador"
 		},
-		0,				// Crecimiento parabólico
+		0,				// Crecimiento parabî‰ ico
 		{
 			40,
 			45,
@@ -520,7 +520,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 			"Normal",
 			"Volador"
 		},
-		0,				// Crecimiento parabólico
+		0,				// Crecimiento parabî‰ ico
 		{
 			63,
 			60,
@@ -550,7 +550,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 			"Normal",
 			"Volador"
 		},
-		0,				// Crecimiento parabólico
+		0,				// Crecimiento parabî‰ ico
 		{
 			83,
 			80,
@@ -658,7 +658,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 		51,		// Vista Lince
 		{
 			{"Picotazo", 1},
-			{"Gruñido", 1},
+			{"Gruîƒ¥do", 1},
 			{"Malicioso", 2},
 			{"Ataque Furia", 3},
 			{"Persecucion", 4},
@@ -717,10 +717,10 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 			190,	// Indice de Captura
 			82	// Experiencia Base
 		},
-		9,		// Electricidad Estática
+		9,		// Electricidad Estç–¸ica
 		{
 			{"Impactrueno", 1},
-			{"Gruñido", 1},
+			{"Gruîƒ¥do", 1},
 			{"Latigo", 2},
 			{"Ataque Rapido", 3},
 			{"Onda Trueno", 3},
@@ -757,9 +757,9 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 			75,	// Indice de Captura
 			122	// Experiencia Base
 		},
-		9,		// Electricidad Estática
+		9,		// Electricidad Estç–¸ica
 		{
-			{"Puño Trueno", 0}
+			{"Puîƒ« Trueno", 0}
 		},
 		{"None", 16}
 	},
@@ -769,7 +769,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 		{
 			"Veneno"
 		},
-		0,				// Crecimiento parabólico
+		0,				// Crecimiento parabî‰ ico
 		{
 			55,	// Putos de Saluda
 			47,	// Ataque
@@ -782,10 +782,10 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 			235,// Indice de Captura
 			59	// Experiencia Base
 		},
-		38,		// Punto Tóxico
+		38,		// Punto Tî‰¬ico
 		{
-			{"Arañazo", 1},
-			{"Gruñido", 1},
+			{"Araîƒzo", 1},
+			{"Gruîƒ¥do", 1},
 			{"Latigo", 2},
 			{"Doble Patada", 3},
 			{"Picotazo Veneno", 4}
@@ -798,7 +798,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 		{
 			"Veneno"
 		},
-		0,				// Crecimiento parabólico
+		0,				// Crecimiento parabî‰ ico
 		{
 			70,	// Putos de Saluda
 			62,	// Ataque
@@ -811,7 +811,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 			120,// Indice de Captura
 			117	// Experiencia Base
 		},
-		38,		// Punto Tóxico
+		38,		// Punto Tî‰¬ico
 		{
 			{"Golpes Furia", 5},
 			{"Mordisco", 6},
@@ -830,7 +830,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 			"Veneno",
 			"Tierra"
 		},
-		0,				// Crecimiento parabólico
+		0,				// Crecimiento parabî‰ ico
 		{
 			90,	// Putos de Saluda
 			92,	// Ataque
@@ -843,7 +843,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 			45,// Indice de Captura
 			194	// Experiencia Base
 		},
-		38,		// Punto Tóxico
+		38,		// Punto Tî‰¬ico
 		{
 			{"Golpe Cuerpo", 0},
 			{"Fuerza Bruta", 0},
@@ -860,7 +860,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 		{
 			"Veneno"
 		},
-		0,				// Crecimiento parabólico
+		0,				// Crecimiento parabî‰ ico
 		{
 			46,	// Putos de Saluda
 			57,	// Ataque
@@ -873,7 +873,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 			235,// Indice de Captura
 			60	// Experiencia Base
 		},
-		38,		// Punto Tóxico
+		38,		// Punto Tî‰¬ico
 		{
 			{"Picotazo", 1},
 			{"Malicioso", 1},
@@ -890,7 +890,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 		{
 			"Veneno"
 		},
-		0,				// Crecimiento parabólico
+		0,				// Crecimiento parabî‰ ico
 		{
 			61,	// Putos de Saluda
 			72,	// Ataque
@@ -903,7 +903,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 			120,// Indice de Captura
 			118	// Experiencia Base
 		},
-		38,		// Punto Tóxico
+		38,		// Punto Tî‰¬ico
 		{
 			{"Ataque Furia", 5},
 			{"Refuerzo", 7},
@@ -921,7 +921,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 			"Veneno",
 			"Tierra"
 		},
-		0,				// Crecimiento parabólico
+		0,				// Crecimiento parabî‰ ico
 		{
 			81,	// Putos de Saluda
 			102,	// Ataque
@@ -934,7 +934,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 			45,// Indice de Captura
 			195	// Experiencia Base
 		},
-		38,		// Punto Tóxico
+		38,		// Punto Tî‰¬ico
 		{
 			{"Golpe", 0},
 			{"Megacuerno", 0},
@@ -964,13 +964,13 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 			190,// Indice de Captura
 			74	// Experiencia Base
 		},
-		72,		// Espúitu Vital
+		72,		// Espåitu Vital
 		{
-			{"Arañazo", 1},
+			{"Araîƒzo", 1},
 			{"Malicioso", 1},
-			{"Foco Energú}", 2},
+			{"Foco Energåƒ˜", 2},
 			{"Patada Baja", 3},
-			{"Golpe Kárate", 4},
+			{"Golpe Kç–µate", 4},
 			{"Chirrido", 4},
 			{"Golpes Furia", 5},
 			{"Persecucion", 6},
@@ -997,7 +997,7 @@ std::vector<PokemonData> pokedex {		// De esta manera es mucho más fácil buscar 
 			75,// Indice de Captura
 			149	// Experiencia Base
 		},
-		72,		// Espúitu Vital
+		72,		// Espåitu Vital
 		{
 			{"Furia", 8},
 			{"Movimiento Sismico", 9},

@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  * Player.cpp
  */
 
@@ -13,6 +13,7 @@ Player::~Player() {
 }
 
 void Player::addPokemon(Pokemon pokemon) {
+	pokemon.domated();
 	pokemons.push_back(pokemon);								// Se agrega el nuevo Pokemon a la caja de Pokemons
 	if(team.size() < 4) {
 		team.push_back(pokemons.size() - 1);					// Cada vez que que se captura un nuevo Pokemon, si hay espacio en el team entonces se agrega al mismo
@@ -53,7 +54,7 @@ bool Player::capturePokemon(Pokemon &captured_pokemon) {
 				valid_pokeball = true;
 				break;
 			default:
-				std::cout << "Pokeball elegida no válida" << std::endl;
+				std::cout << "Pokeball elegida no vç–ida" << std::endl;
 				break;
 		}
 	}
@@ -103,9 +104,9 @@ void Player::giveObject() {
 		std::cout << "El team de " << name << " es:" << std::endl;	// Muestro team
 		displayTeam();
 		std::cout << "Indique el numero del pokemon del team que desea darle un objeto: ";
-		std::cin >> pokemon_team;									// Indico a cuál se lo doy
+		std::cin >> pokemon_team;									// Indico a cuç– se lo doy
 		std::cout << "Indique el numero del objeto que le voy a dar: ";
-		std::cin >> object;											// Indico quEobjecto le doy
+		std::cin >> object;											// Indico quãƒ»objecto le doy
 		if(object <= 200 && object >= 100)
 			pokemons.at(team.at(pokemon_team - 1)).receiveObject(object);// Le doy el objeto
 		else std::cout << "Valor utilizado no valido" << std::endl;
@@ -135,14 +136,14 @@ void Player::selectActive() {
 		pokemon_quantity = displayTeam();
 		std::cout << "Elija su Pokemon activo: ";
 		std::cin >> chosed_pokemon;
-		if(chosed_pokemon <= pokemon_quantity && chosed_pokemon > 0 ) {	// Verifico que el número este dentro del rango
+		if(chosed_pokemon <= pokemon_quantity && chosed_pokemon > 0 ) {	// Verifico que el nä¼¹ero este dentro del rango
 			if(!pokemons.at(team.at(chosed_pokemon - 1)).isDefeated()) {			// Verifico que el Pokemon elegido no este debilitado
 				valid_pokemon = true;
 				active_pokemon = team.at(chosed_pokemon - 1);
 				std::cout << name << " ha elegido a ";
 				pokemons.at(active_pokemon).displayName();
 				std::cout << std::endl;
-				pokemons.at(active_pokemon).modifierRefresh();		// Elimino cualquier modificador de estadúticas que le haya quedado
+				pokemons.at(active_pokemon).modifierRefresh();		// Elimino cualquier modificador de estadï¨ticas que le haya quedado
 				pokemons.at(active_pokemon).temporalStatusRefresh();// Elimino cualquier estado temporal que le haya quedado
 				pokemons.at(active_pokemon).passCampusStatus(pokemons.at(last_active_pokemon));
 			} else {
@@ -150,7 +151,7 @@ void Player::selectActive() {
 				std::cout << " se encuentra debilidato y no puede pelear" << std::endl;
 			}
 
-		} else std::cout << "Pokemon no válido" << std::endl;
+		} else std::cout << "Pokemon no vç–ido" << std::endl;
 	}
 }
 
@@ -213,17 +214,17 @@ void battle(std::vector<Player> &players) {
 	std::string enemy_pokemon {};
 	std::vector<Pokemon> enemy_pokemons {};
 	int enemy_pokemon_level {};
-	std::vector<std::vector<bool>> player_battle_states {};	// Indica los estados: 1=Viento Afú‹
+	std::vector<std::vector<bool>> player_battle_states {};	// Indica los estados: 1=Viento AfåŒ¤
 
 	for(auto &player: players) {	// Indico que jugadores participan y sus respectivos adversarios
 		if(player.defeated) {	// Si el jugador no participa
 			player_battling.push_back(false);								// Indico que no pelea
 			std::cout << player.name << " no puede pelear" << std::endl;
-			enemy_pokemons.push_back(Pokemon());							// Agrego un Pokemon enemigo "dummy" por temas de llenar el vector para la sincronización
+			enemy_pokemons.push_back(Pokemon());							// Agrego un Pokemon enemigo "dummy" por temas de llenar el vector para la sincronizaciî‰¢
 		} else {
 			player_battling.push_back(true);								// Indico que pelea
 			battling = true;												// De este manera, con que un solo jugador pueda luchar se inicia la pelea, enc aso contrario no
-			player.selectActive();											// Elección de Pokemon activo de cada jugador que pueda pelear
+			player.selectActive();											// Elecciî‰¢ de Pokemon activo de cada jugador que pueda pelear
 			std::cout << "Indique el pokemon y nivel enemigo del jugador " << player.name << ": ";
 			std::cin >> enemy_pokemon;										// Se indica el nombre del Pokemon enemigo (sea salvaje o de un entrenador)
 			std::cin >> enemy_pokemon_level;								// Se indica el nivel del Pokemon enemigo
@@ -243,33 +244,33 @@ void battle(std::vector<Player> &players) {
 							  << ": " << std::endl;
 					moves_quantity = enemy_pokemons.at(i).displayMoves();
 					std::cin >> chosed_move;
-					if(chosed_move <= moves_quantity && chosed_move > 0 ) {			// Se verifica que la selección sea válida
+					if(chosed_move <= moves_quantity && chosed_move > 0 ) {			// Se verifica que la selecciî‰¢ sea vç–ida
 						valid_move = true;
-						enemy_chosed_move = enemy_pokemons.at(i).getMove(chosed_move);	// De ser válida, se alamacena el movimiento a usar por el pokemon enemigo
+						enemy_chosed_move = enemy_pokemons.at(i).getMove(chosed_move);	// De ser vç–ida, se alamacena el movimiento a usar por el pokemon enemigo
 						std::cout << "El pokemon salvaje ha usado ";
 						enemy_pokemons.at(i).displayMove(chosed_move);
-					} else std::cout << "Movimiento no válido" << std::endl;
+					} else std::cout << "Movimiento no vç–ido" << std::endl;
 				}
 				valid_move = false;
 
-				while(!valid_action) {	// Selecciono la acción del jugador
-					std::cout << "Elija la acción a ejecutar del jugador " << players.at(i).name << ": " << std::endl
+				while(!valid_action) {	// Selecciono la acciî‰¢ del jugador
+					std::cout << "Elija la acciî‰¢ a ejecutar del jugador " << players.at(i).name << ": " << std::endl
 							  << std::setw(12) << std::right << "1 Movimiento"
 							  << std::setw(12) << std::right << "2 Capturar"
 							  << std::setw(12) << std::right << "3 Cambiar"
-							  // Falta agregar opcú‹ de usar objetos
+							  // Falta agregar opcåŒ¤ de usar objetos
 							  << std::endl;
 					std::cin  >> chosed_action;
 					if(chosed_action <= 3 && chosed_action > 0 )
 						valid_action = true;
 					else
-						std::cout << "Acción no válido" << std::endl;
+						std::cout << "Acciî‰¢ no vç–ido" << std::endl;
 				}
 				valid_action = false;
 
-				switch(chosed_action) {	// Depende a la acción, se prosigue
-					case 1:	// Selección de usar movimiento
-						// Se podrú} integrar esto como una función
+				switch(chosed_action) {	// Depende a la acciî‰¢, se prosigue
+					case 1:	// Selecciî‰¢ de usar movimiento
+						// Se podråƒ˜ integrar esto como una funciî‰¢
 						std::cout << "Elija el Movimiento a usar de ";	// Se elije el movimiento a usar
 						players.at(i).pokemons.at(players.at(i).active_pokemon).displayName();
 						std::cout << ": " << std::endl;
@@ -282,7 +283,7 @@ void battle(std::vector<Player> &players) {
 								players.at(i).pokemons.at(players.at(i).active_pokemon).displayName();
 								std::cout << " ha elegido usar ";
 								players.at(i).pokemons.at(players.at(i).active_pokemon).displayMove(chosed_move);
-							} else std::cout << "Movimiento no válido" << std::endl;
+							} else std::cout << "Movimiento no vç–ido" << std::endl;
 						}
 						valid_move = false;
 
@@ -297,15 +298,15 @@ void battle(std::vector<Player> &players) {
 						}
 						break;
 
-					case 2:	// Selección de usar pokeball
+					case 2:	// Selecciî‰¢ de usar pokeball
 						if(players.at(i).capturePokemon(enemy_pokemons.at(i)))
-							player_battling.at(i) = false;	// Elección de Pokeball y ejecución de captura
+							player_battling.at(i) = false;	// Elecciî‰¢ de Pokeball y ejecuciî‰¢ de captura
 						else
 							enemy_pokemons.at(i).useMove(players.at(i).pokemons.at(players.at(i).active_pokemon), enemy_chosed_move);
 						break;
 
-					case 3:	// Selección de cambiar pokemon
-						if(enemy_chosed_move == "Persecucion")											// Verifica si se utilizEpersecucion
+					case 3:	// Selecciî‰¢ de cambiar pokemon
+						if(enemy_chosed_move == "Persecucion")											// Verifica si se utilizãƒ»persecucion
 							enemy_pokemons.at(i).useMove(players.at(i).pokemons.at(players.at(i).active_pokemon), "Persecucion+");
 						players.at(i).selectActive();													// Elijo nuevo Pokemon activo
 						break;
@@ -316,28 +317,28 @@ void battle(std::vector<Player> &players) {
 				}
 
 				if(player_battling.at(i) == true) {	// Se verifica que el combate no haya acabado por la captura del enemigo
-					if(getPriority(player_chosed_move) > getPriority(enemy_chosed_move) || (!(getPriority(player_chosed_move) < getPriority(enemy_chosed_move)) && players.at(i).pokemons.at(players.at(i).active_pokemon).getVelocity() >= enemy_pokemons.at(i).getVelocity())) {	// Se descenlazan daño por estados en el orden de los movimientos
-						if(players.at(i).pokemons.at(players.at(i).active_pokemon).isSeeded() && !enemy_pokemons.at(i).isDefeated())		// Se descuenta el daño de estados
-							enemy_pokemons.at(i).cureDamage(players.at(i).pokemons.at(players.at(i).active_pokemon).receiveDamage().damage);// Al no indicar valor de daño (por default 0) el método verificarEsi el pokemon tiene algún estado y calcularEel daño
+					if(getPriority(player_chosed_move) > getPriority(enemy_chosed_move) || (!(getPriority(player_chosed_move) < getPriority(enemy_chosed_move)) && players.at(i).pokemons.at(players.at(i).active_pokemon).getVelocity() >= enemy_pokemons.at(i).getVelocity())) {	// Se descenlazan daîƒ« por estados en el orden de los movimientos
+						if(players.at(i).pokemons.at(players.at(i).active_pokemon).isSeeded() && !enemy_pokemons.at(i).isDefeated())		// Se descuenta el daîƒ« de estados
+							enemy_pokemons.at(i).cureDamage(players.at(i).pokemons.at(players.at(i).active_pokemon).receiveDamage().damage);// Al no indicar valor de daîƒ« (por default 0) el mé¨odo verificarãƒ»si el pokemon tiene algä½– estado y calcularãƒ»el daîƒ«
 						else
 							players.at(i).pokemons.at(players.at(i).active_pokemon).receiveDamage();
-						if(enemy_pokemons.at(i).isSeeded() && !players.at(i).pokemons.at(players.at(i).active_pokemon).isDefeated())		// Se descuenta el daño de estados
-							players.at(i).pokemons.at(players.at(i).active_pokemon).cureDamage(enemy_pokemons.at(i).receiveDamage().damage);// Al no indicar valor de daño (por default 0) el método verificarEsi el pokemon tiene algún estado y calcularEel daño
+						if(enemy_pokemons.at(i).isSeeded() && !players.at(i).pokemons.at(players.at(i).active_pokemon).isDefeated())		// Se descuenta el daîƒ« de estados
+							players.at(i).pokemons.at(players.at(i).active_pokemon).cureDamage(enemy_pokemons.at(i).receiveDamage().damage);// Al no indicar valor de daîƒ« (por default 0) el mé¨odo verificarãƒ»si el pokemon tiene algä½– estado y calcularãƒ»el daîƒ«
 						else
 							enemy_pokemons.at(i).receiveDamage();
 					} else {
-						if(enemy_pokemons.at(i).isSeeded() && !players.at(i).pokemons.at(players.at(i).active_pokemon).isDefeated())		// Se descuenta el daño de estados
-							players.at(i).pokemons.at(players.at(i).active_pokemon).cureDamage(enemy_pokemons.at(i).receiveDamage().damage);// Al no indicar valor de daño (por default 0) el método verificarEsi el pokemon tiene algún estado y calcularEel daño
+						if(enemy_pokemons.at(i).isSeeded() && !players.at(i).pokemons.at(players.at(i).active_pokemon).isDefeated())		// Se descuenta el daîƒ« de estados
+							players.at(i).pokemons.at(players.at(i).active_pokemon).cureDamage(enemy_pokemons.at(i).receiveDamage().damage);// Al no indicar valor de daîƒ« (por default 0) el mé¨odo verificarãƒ»si el pokemon tiene algä½– estado y calcularãƒ»el daîƒ«
 						else
 							enemy_pokemons.at(i).receiveDamage();
-						if(players.at(i).pokemons.at(players.at(i).active_pokemon).isSeeded() && !enemy_pokemons.at(i).isDefeated())		// Se descuenta el daño de estados
-							enemy_pokemons.at(i).cureDamage(players.at(i).pokemons.at(players.at(i).active_pokemon).receiveDamage().damage);// Al no indicar valor de daño (por default 0) el método verificarEsi el pokemon tiene algún estado y calcularEel daño
+						if(players.at(i).pokemons.at(players.at(i).active_pokemon).isSeeded() && !enemy_pokemons.at(i).isDefeated())		// Se descuenta el daîƒ« de estados
+							enemy_pokemons.at(i).cureDamage(players.at(i).pokemons.at(players.at(i).active_pokemon).receiveDamage().damage);// Al no indicar valor de daîƒ« (por default 0) el mé¨odo verificarãƒ»si el pokemon tiene algä½– estado y calcularãƒ»el daîƒ«
 						else
 							players.at(i).pokemons.at(players.at(i).active_pokemon).receiveDamage();
 					}
 				}
 
-				// Se descuenta el daño de climas
+				// Se descuenta el daîƒ« de climas
 
 				players.at(i).pokemons.at(players.at(i).active_pokemon).cureFlinch();	// Curo el amedrentamiento
 				enemy_pokemons.at(i).cureFlinch();
@@ -371,25 +372,30 @@ void battle(std::vector<Player> &players) {
 }
 
 void pokemonCenter(std::vector<Player> &players) {
-	char answer {};
-	for(auto &player: players) {	// Ejecuto acción en cada jugador
+	for(auto &player: players) {	// Ejecuto acciÃ³n en cada jugador
 		for(auto &pokemon: player.pokemons) {	// Se curan todos los Pokemons
 			pokemon.cureDamage();
 			pokemon.cureState();
 		}
 		player.defeated = false;	// Se cura al jugador
 		std::cout << "Se han curado todos los pokemons de " << player.name << std::endl;
+	}
+	administrateTeam(players);
+}
 
+void administrateTeam(std::vector<Player>& players) {
+	char answer{};
+	for (auto& player : players) {	// Ejecuto acciÃ³n en cada jugador
 		std::cout << "Desea " << player.name << " modificar algun pokemon del team? (y/n): ";
 		std::cin >> answer;						// Se elige si cambiar Pokemons
 		std::cout << std::endl;
-		if(answer == 'y')
+		if (answer == 'y')
 			player.changeTeam();
 
 		std::cout << "Desea " << player.name << " utilizar algun objeto? (y/n): ";
 		std::cin >> answer;						// Se elige si usar un objeto
 		std::cout << std::endl;
-		if(answer == 'y')
+		if (answer == 'y')
 			player.giveObject();
 	}
 }

@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  * Movedex.cpp
  */
 
@@ -14,7 +14,7 @@ Move findMove(std::string move_chosed) {
 			valid_move = true;
 			return *it;	// Me devuelve una estructura Move
 		} else {
-			std::cout << "Nombre de Pokemon no válido" << std::endl
+			std::cout << "Nombre de Pokemon no vç–ido" << std::endl
 					  << "Elija otro nombre de Pokemon: ";
 			std::cin >> move_chosed;
 		}
@@ -183,13 +183,13 @@ int getPriority(std::string move_chosed) {
 	if(it != movedex.end())
 		return it->priority;	// Me devuelve la prioridad del movimiento
 	else {
-		std::cout << "Nombre del Movimiento no válido" << std::endl;
+		std::cout << "Nombre del Movimiento no vç–ido" << std::endl;
 		return 0;
 	}
 }
 
 /******************MOVEDEX******************/
-/*En esta sección se alamacenarán a todos los Movimientos
+/*En esta secciî‰¢ se alamacenarç–£ a todos los Movimientos
  */
 std::vector<Move> movedex {
 	Move {
@@ -197,10 +197,10 @@ std::vector<Move> movedex {
 		"Psiquico",		// Tipo
 		"Estado",	// Clase
 		0,		// Potencia
-		0,		// Precisión
+		0,		// Precisiî‰¢
 		0,		// Objetivo usuario
 		0,		// Prioridad
-		0,		// Crú‘ico
+		0,		// Crå’œico
 		false,
 		false,
 		true,
@@ -211,16 +211,16 @@ std::vector<Move> movedex {
 		" ha subido su Velocidad en 2 niveles"
 	},
 	Move {
-		"Arañazo",	// Nombre
+		"Araîƒzo",	// Nombre
 		"Normal",	// Tipo
 		"Fisico",	// Clase
 		40,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false	// Efecto
 	},
 	Move {
@@ -228,12 +228,12 @@ std::vector<Move> movedex {
 		"Fuego",	// Tipo
 		"Especial",	// Clase
 		40,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		0.1,	// Probabilidad del efecto
 		"Estado",
@@ -246,12 +246,12 @@ std::vector<Move> movedex {
 		"Tierra",	// Tipo
 		"Estado",	// Clase
 		0,	// Potencia
-		100,// Precisión
+		100,// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		1.0,	// Probabilidad del efecto
 		"Estadistica",
@@ -264,29 +264,29 @@ std::vector<Move> movedex {
 		"Normal",	// Tipo
 		"Fisico",	// Clase
 		15,	// Potencia
-		85,	// Precisión
+		85,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		0.0,	// Probabilidad del efecto
 		"Cadena",
 		{""},
-		5,	// Máximo numero de golpes
+		5,	// Mç—Šimo numero de golpes
 	},
 	Move {
 		"Ataque Rapido",	// Nombre
 		"Normal",	// Tipo
 		"Fisico",	// Clase
 		40,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		1,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false	// Efecto
 	},
 	Move {
@@ -294,25 +294,25 @@ std::vector<Move> movedex {
 		"Normal",	// Tipo
 		"Fisico",	// Clase
 		80,	// Potencia
-		75,	// Precisión
+		75,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false	// Efecto
 	},
-	Move {	// Movimiento producto de la autolesión por confusión
+	Move {	// Movimiento producto de la autolesiî‰¢ por confusiî‰¢
 		"Autolesion",	// Nombre
 		"None",	// Tipo
 		"Fisico",	// Clase
 		40,	// Potencia
-		0,	// Precisión
+		0,	// Precisiî‰¢
 		0,	// Objetivo usuario
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false	// Efecto
 	},
 	Move {
@@ -320,12 +320,12 @@ std::vector<Move> movedex {
 		"Electrico",	// Tipo
 		"Especial",	// Clase
 		1,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false,	// Efecto
 	},
 	Move {
@@ -333,12 +333,12 @@ std::vector<Move> movedex {
 		"Siniestro",	// Tipo
 		"Fisico",	// Clase
 		50,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false	// Efecto
 	},
 	Move {
@@ -346,12 +346,12 @@ std::vector<Move> movedex {
 		"Agua",	// Tipo
 		"Especial",	// Clase
 		20,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		2,	// Objetivo enemigos
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		0.1,	// Probabilidad del efecto
 		"Estadistica",
@@ -364,25 +364,25 @@ std::vector<Move> movedex {
 		"Veneno",	// Tipo
 		"Especial",	// Clase
 		65,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false,	// Efecto
 	},
-	Move {	// Se activa con la habilidad de Carga Tóxica
+	Move {	// Se activa con la habilidad de Carga Tî‰¬ica
 		"Carga Toxica+",	// Nombre
 		"Veneno",	// Tipo
 		"Especial",	// Clase
 		130,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false,	// Efecto
 	},
 	Move {
@@ -390,12 +390,12 @@ std::vector<Move> movedex {
 		"Electrico",	// Tipo
 		"Fisico",	// Clase
 		65,	// Potencia
-		100,// Precisión
+		100,// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		0.3,	// Probabilidad del efecto
 		"Estado",
@@ -408,12 +408,12 @@ std::vector<Move> movedex {
 		"Normal",	// Tipo
 		"Estado",	// Clase
 		0,	// Potencia
-		85,// Precisión
+		85,// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		true,	// Sónico
+		true,	// Sî‰¢ico
 		true,	// Efecto
 		1.0,	// Probabilidad del efecto
 		"Estadistica",
@@ -426,12 +426,12 @@ std::vector<Move> movedex {
 		"Electrico",	// Tipo
 		"Especial",	// Clase
 		80,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		2,	// Objetivo enemigos
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		0.3,	// Probabilidad del efecto
 		"Estado",
@@ -444,12 +444,12 @@ std::vector<Move> movedex {
 		"Psiquico",	// Tipo
 		"Especial",	// Clase
 		50,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		0.1,	// Probabilidad del efecto
 		"Estado",
@@ -462,12 +462,12 @@ std::vector<Move> movedex {
 		"Normal",	// Tipo
 		"Fisico",	// Clase
 		65,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false	// Efecto
 	},
 	Move {
@@ -475,10 +475,10 @@ std::vector<Move> movedex {
 		"Bicho",		// Tipo
 		"Estado",	// Clase
 		0,		// Potencia
-		0,		// Precisión
+		0,		// Precisiî‰¢
 		0,		// Objetivo usuario
 		0,		// Prioridad
-		0,		// Crú‘ico
+		0,		// Crå’œico
 		false,
 		false,
 		true,
@@ -497,12 +497,12 @@ std::vector<Move> movedex {
 		"Bicho",	// Tipo
 		"Estado",	// Clase
 		0,	// Potencia
-		95,// Precisión
+		95,// Precisiî‰¢
 		2,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		1.0,	// Probabilidad del efecto
 		"Estadistica",
@@ -510,32 +510,32 @@ std::vector<Move> movedex {
 		-1,
 		" ha bajado su Velocidad en 1 nivel"
 	},
-	Move {	// Este movimiento es único en cuanto efecto, asEque no tomar como referencia para otros movimientos
+	Move {	// Este movimiento es ä½–ico en cuanto efecto, asãƒ»que no tomar como referencia para otros movimientos
 		"Doble Ataque",	// Nombre
 		"Bicho",	// Tipo
 		"Fisico",	// Clase
 		25,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		0.2,	// Probabilidad del efecto
 		"Cadena",
 		{"Envenenado"},
-		2,	// Máximo numero de golpes
+		2,	// Mç—Šimo numero de golpes
 	},
 	Move {
 		"Doble Equipo",	// Nombre
 		"Normal",		// Tipo
 		"Estado",	// Clase
 		0,		// Potencia
-		0,		// Precisión
+		0,		// Precisiî‰¢
 		0,		// Objetivo usuario
 		0,		// Prioridad
-		0,		// Crú‘ico
+		0,		// Crå’œico
 		false,
 		false,
 		true,
@@ -550,29 +550,29 @@ std::vector<Move> movedex {
 		"Lucha",	// Tipo
 		"Fisico",	// Clase
 		30,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		0.0,	// Probabilidad del efecto
 		"Cadena",
 		{""},
-		2,	// Máximo numero de golpes
+		2,	// Maimo numero de golpes
 	},
 	Move {
 		"Drenadoras",	// Nombre
 		"Planta",	// Tipo
 		"Estado",	// Clase
 		0,	// Potencia
-		90,// Precisión
+		90,// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		1.0,	// Probabilidad del efecto
 		"Estado",
@@ -584,13 +584,13 @@ std::vector<Move> movedex {
 		"Esfuerzo",	// Nombre
 		"Normal",	// Tipo
 		"Fisico",	// Clase
-		1,	// Potencia	// Necesito hacerlo asEpar aque el código funcione
-		100,	// Precisión
+		1,	// Potencia	// Necesito hacerlo asãƒ»par aque el cî‰˜igo funcione
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false,	// Efecto
 	},
 	Move {
@@ -598,12 +598,12 @@ std::vector<Move> movedex {
 		"Normal",	// Tipo
 		"Estado",	// Clase
 		0,	// Potencia
-		0,// Precisión
+		0,// Precisiî‰¢
 		0,	// Objetivo usuario
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		1.0,	// Probabilidad del efecto
 		"Estadistica",
@@ -616,10 +616,10 @@ std::vector<Move> movedex {
 		"Normal",		// Tipo
 		"Estado",	// Clase
 		0,		// Potencia
-		0,		// Precisión
+		0,		// Precisiî‰¢
 		0,		// Objetivo usuario
 		0,		// Prioridad
-		0,		// Crú‘ico
+		0,		// Crå’œico
 		false,
 		false,
 		true,
@@ -634,12 +634,12 @@ std::vector<Move> movedex {
 		"Acero",	// Tipo
 		"Fisico",	// Clase
 		50,	// Potencia
-		95,	// Precisión
+		95,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		1.1,	// Probabilidad del efecto
 		"Estadistica",
@@ -652,12 +652,12 @@ std::vector<Move> movedex {
 		"Volador",	// Tipo
 		"Fisico",	// Clase
 		60,	// Potencia
-		0,	// Precisión
+		0,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false	// Efecto
 	},
 	Move {
@@ -665,12 +665,12 @@ std::vector<Move> movedex {
 		"Lucha",	// Tipo
 		"Fisico",	// Clase
 		50,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		2,	// Crú‘ico
+		2,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false	// Efecto
 	},
 	Move {
@@ -678,29 +678,29 @@ std::vector<Move> movedex {
 		"Normal",	// Tipo
 		"Fisico",	// Clase
 		18,	// Potencia
-		80,	// Precisión
+		80,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		0.0,	// Probabilidad del efecto
 		"Cadena",
 		{""},
-		5,	// Máximo numero de golpes
+		5,	// Mç—Šimo numero de golpes
 	},
 	Move {
-		"Gruñido",	// Nombre
+		"Gruîƒ¥do",	// Nombre
 		"Normal",	// Tipo
 		"Estado",	// Clase
 		0,	// Potencia
-		100,// Precisión
+		100,// Precisiî‰¢
 		2,	// Objetivo enemigos
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		true,	// Sónico
+		true,	// Sî‰¢ico
 		true,	// Efecto
 		1.0,	// Probabilidad del efecto
 		"Estadistica",
@@ -713,12 +713,12 @@ std::vector<Move> movedex {
 		"Normal",	// Tipo
 		"Fisico",	// Clase
 		80,	// Potencia
-		90,	// Precisión
+		90,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		0.1,	// Probabilidad del efecto
 		"Estado",
@@ -731,12 +731,12 @@ std::vector<Move> movedex {
 		"Electrico",	// Tipo
 		"Especial",	// Clase
 		40,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		0.1,	// Probabilidad del efecto
 		"Estado",
@@ -749,12 +749,12 @@ std::vector<Move> movedex {
 		"Normal",	// Tipo
 		"Estado",	// Clase
 		0,	// Potencia
-		100,// Precisión
+		100,// Precisiî‰¢
 		2,	// Objetivo enemigos
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		1.0,	// Probabilidad del efecto
 		"Estadistica",
@@ -767,12 +767,12 @@ std::vector<Move> movedex {
 		"Planta",	// Tipo
 		"Fisico",	// Clase
 		35,	// Potencia
-		100,// Precisión
+		100,// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false	// Efecto
 	},
 	Move {
@@ -780,30 +780,30 @@ std::vector<Move> movedex {
 		"Normal",	// Tipo
 		"Estado",	// Clase
 		0,	// Potencia
-		100,// Precisión
+		100,// Precisiî‰¢
 		2,	// Objetivo enemigos
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		1.0,	// Probabilidad del efecto
 		"Estadistica",
 		{"Defensa"},
 		-1,
-		" ha bajado su Ataque en 1 nivel"
+		" ha bajado su Defensa en 1 nivel"
 	},
 	Move {
 		"Moflete Estatico",	// Nombre
 		"Electrico",	// Tipo
 		"Fisico",	// Clase
 		20,	// Potencia
-		100,// Precisión
+		100,// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		1.0,	// Probabilidad del efecto
 		"Estado",
@@ -816,12 +816,12 @@ std::vector<Move> movedex {
 		"Siniestro",	// Tipo
 		"Fisico",	// Clase
 		60,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		0.3,	// Probabilidad del efecto
 		"Estado",
@@ -834,12 +834,12 @@ std::vector<Move> movedex {
 		"Electrico",	// Tipo
 		"Estado",	// Clase
 		0,	// Potencia
-		100,// Precisión
+		100,// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		1.0,	// Probabilidad del efecto
 		"Estado",
@@ -852,10 +852,10 @@ std::vector<Move> movedex {
 		"Psiquico",		// Tipo
 		"Estado",	// Clase
 		0,		// Potencia
-		0,		// Precisión
+		0,		// Precisiî‰¢
 		3,		// Objetivo equipo
 		0,		// Prioridad
-		0,		// Crú‘ico
+		0,		// Crå’œico
 		false,
 		false,
 		true,
@@ -870,12 +870,12 @@ std::vector<Move> movedex {
 		"Normal",	// Tipo
 		"Estado",	// Clase
 		0,	// Potencia
-		100,// Precisión
+		100,// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		1.0,	// Probabilidad del efecto
 		"Estadistica",
@@ -888,12 +888,12 @@ std::vector<Move> movedex {
 		"Planta",	// Tipo
 		"Estado",	// Clase
 		0,	// Potencia
-		75,// Precisión
+		75,// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		1.0,	// Probabilidad del efecto
 		"Estado",
@@ -905,13 +905,13 @@ std::vector<Move> movedex {
 		"Patada Baja",	// Nombre
 		"Lucha",	// Tipo
 		"Fisico",	// Clase
-		1,	// Potencia	// Este valor es 1 para ayudar al código
-		100,	// Precisión
+		1,	// Potencia	// Este valor es 1 para ayudar al cî‰˜igo
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false,	// Efecto
 	},
 	Move {
@@ -919,25 +919,25 @@ std::vector<Move> movedex {
 		"Siniestro",	// Tipo
 		"Fisico",	// Clase
 		40,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false	// Efecto
 	},
-	Move {	// Este movimiento es la versión de Persecución cuando es utilizada durante el cambio del enemigo
+	Move {	// Este movimiento es la versiî‰¢ de Persecuciî‰¢ cuando es utilizada durante el cambio del enemigo
 		"Persecucion+",	// Nombre
 		"Siniestro",	// Tipo
 		"Fisico",	// Clase
 		80,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false	// Efecto
 	},
 	Move {
@@ -945,12 +945,12 @@ std::vector<Move> movedex {
 		"Volador",	// Tipo
 		"Fisico",	// Clase
 		35,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false	// Efecto
 	},
 	Move {
@@ -958,12 +958,12 @@ std::vector<Move> movedex {
 		"Veneno",	// Tipo
 		"Fisico",	// Clase
 		15,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		0.3,	// Probabilidad del efecto
 		"Estado",
@@ -976,29 +976,29 @@ std::vector<Move> movedex {
 		"Bicho",	// Tipo
 		"Fisico",	// Clase
 		14,	// Potencia
-		85,	// Precisión
+		85,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		0.0,	// Probabilidad del efecto
 		"Cadena",
 		{""},
-		5,	// Máximo numero de golpes
+		5,	// Mç—Šimo numero de golpes
 	},
 	Move {
 		"Pistola Agua",	// Nombre
 		"Agua",	// Tipo
 		"Especial",	// Clase
 		40,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false	// Efecto
 	},
 	Move {
@@ -1006,12 +1006,12 @@ std::vector<Move> movedex {
 		"Normal",	// Tipo
 		"Fisico",	// Clase
 		35,	// Potencia
-		95,	// Precisión
+		95,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false	// Efecto
 	},
 	Move {
@@ -1019,12 +1019,12 @@ std::vector<Move> movedex {
 		"Veneno",	// Tipo
 		"Estado",	// Clase
 		0,	// Potencia
-		75,// Precisión
+		75,// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		1.0,	// Probabilidad del efecto
 		"Estado",
@@ -1037,12 +1037,12 @@ std::vector<Move> movedex {
 		"Psiquico",	// Tipo
 		"Especial",	// Clase
 		65,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		0.1,	// Probabilidad del efecto
 		"Estado",
@@ -1055,12 +1055,12 @@ std::vector<Move> movedex {
 		"Veneno",	// Tipo
 		"Estado",	// Clase
 		0,	// Potencia
-		0,	// Precisión
+		0,	// Precisiî‰¢
 		2,	// Objetivo enemigos
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		1.0,	// Probabilidad del efecto
 		"Campo",
@@ -1073,12 +1073,12 @@ std::vector<Move> movedex {
 		"Veneno",	// Tipo
 		"Fisico",	// Clase
 		80,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		0.3,	// Probabilidad del efecto
 		"Estado",
@@ -1091,12 +1091,12 @@ std::vector<Move> movedex {
 		"Electrico",	// Tipo
 		"Especial",	// Clase
 		95,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		0.1,	// Probabilidad del efecto
 		"Estado",
@@ -1109,10 +1109,10 @@ std::vector<Move> movedex {
 		"Agua",		// Tipo
 		"Estado",	// Clase
 		0,		// Potencia
-		0,		// Precisión
+		0,		// Precisiî‰¢
 		0,		// Objetivo usuario
 		0,		// Prioridad
-		0,		// Crú‘ico
+		0,		// Crå’œico
 		false,
 		false,
 		true,
@@ -1127,12 +1127,12 @@ std::vector<Move> movedex {
 		"Planta",	// Tipo
 		"Estado",	// Clase
 		0,	// Potencia
-		75,// Precisión
+		75,// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		1.0,	// Probabilidad del efecto
 		"Estado",
@@ -1145,12 +1145,12 @@ std::vector<Move> movedex {
 		"Normal",	// Tipo
 		"Estado",	// Clase
 		0,	// Potencia
-		55,// Precisión
+		55,// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		true,	// Sónico
+		true,	// Sî‰¢ico
 		true,	// Efecto
 		1.0,	// Probabilidad del efecto
 		"Estado",
@@ -1163,12 +1163,12 @@ std::vector<Move> movedex {
 		"Volador",	// Tipo
 		"Especial",	// Clase
 		40,	// Potencia
-		100,	// Precisión
+		100,	// PrecisiÃ³n
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// CrÃ­tico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// SÃ³nico
 		false	// Efecto
 	},
 	// Se tiene que implementar
@@ -1177,12 +1177,12 @@ std::vector<Move> movedex {
 		"Volador",	// Tipo
 		"Especial",	// Clase
 		80,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		false	// Efecto
 	},
 	Move {
@@ -1190,12 +1190,12 @@ std::vector<Move> movedex {
 		"Electrico",	// Tipo
 		"Especial",	// Clase
 		120,	// Potencia
-		70,	// Precisión
+		70,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		0.3,	// Probabilidad del efecto
 		"Estado",
@@ -1208,10 +1208,10 @@ std::vector<Move> movedex {
 		"Normal",		// Tipo
 		"Estado",	// Clase
 		0,		// Potencia
-		0,		// Precisión
+		0,		// Precisiî‰¢
 		3,		// Objetivo equipo
 		0,		// Prioridad
-		0,		// Crú‘ico
+		0,		// Crå’œico
 		false,
 		false,
 		true,
@@ -1226,10 +1226,10 @@ std::vector<Move> movedex {
 		"Volador",		// Tipo
 		"Estado",	// Clase
 		0,		// Potencia
-		0,		// Precisión
+		0,		// Precisiî‰¢
 		3,		// Objetivo equipo
 		0,		// Prioridad
-		0,		// Crú‘ico
+		0,		// Crå’œico
 		false,
 		false,
 		true,
@@ -1244,12 +1244,12 @@ std::vector<Move> movedex {
 		"Bicho",	// Tipo
 		"Especial",	// Clase
 		60,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		1.1,	// Probabilidad del efecto
 		"Estadistica",
@@ -1268,12 +1268,12 @@ std::vector<Move> movedex {
 		"Electrico",	// Tipo
 		"Fisico",	// Clase
 		90,	// Potencia
-		100,// Precisión
+		100,// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		true,	// Contacto
-		false,	// Sónico
+		false,	// Sî‰¢ico
 		true,	// Efecto
 		0,	// Probabilidad del efecto
 		"Retroceso",
@@ -1285,12 +1285,12 @@ std::vector<Move> movedex {
 		"Bicho",	// Tipo
 		"Especial",	// Clase
 		90,	// Potencia
-		100,	// Precisión
+		100,	// Precisiî‰¢
 		1,	// Objetivo enemigo
 		0,	// Prioridad
-		0,	// Crú‘ico
+		0,	// Crå’œico
 		false,	// Contacto
-		true,	// Sónico
+		true,	// Sî‰¢ico
 		true,	// Efecto
 		0.1,	// Probabilidad del efecto
 		"Estadistica",
