@@ -80,11 +80,11 @@ void newGame() {
 
 	std::cout << std::setw(40) << std::right << "Pokemon Master Quest v0.1" << std::endl << std::endl;
 
-	while(players_quantity < 1 or players_quantity > 5) {	// Se pregunta e indica la cantidad de jugadores
+	while(players_quantity < 1 || players_quantity > 5) {	// Se pregunta e indica la cantidad de jugadores
 		std::cout << "Indique la cantidad de jugadores (de 1 a 5 jugadores): ";
 		std::cin >> players_quantity;
 		std::cout << std::endl;
-		if(players_quantity < 1 or players_quantity > 5)
+		if(players_quantity < 1 || players_quantity > 5)
 			std::cout << "La cantidad de jugadores indicada no es válida" << std::endl << std::endl;
 	}
 
